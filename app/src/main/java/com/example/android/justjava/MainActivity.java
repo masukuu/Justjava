@@ -58,7 +58,6 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 Intent myIntent = new Intent(this, ShowOrderActivity.class);
                 myIntent.putExtra("ORDER_LIST", priceMessage);
-
                 startActivity(myIntent);
             break;
         }
@@ -66,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void submitOrder(View view){
-        //get hasWhippedCream
+        //get hasWhippedCream & hasChocolate
         CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.whipped_cream_checkBox);
         hasWhippedCream = whippedCreamBox.isChecked();
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
@@ -78,13 +77,14 @@ public class MainActivity extends ActionBarActivity {
             eachPrice += 2;
         }
         displayPrice(quantity * (eachPrice));
-        //reset
-        eachPrice = 5;
+
         //get name
         EditText text = (EditText) findViewById(R.id.name_field);
         name = text.getText().toString();
-
+        //make order list & switch
         switchActivity( 2, createOrderSummary() );
+        //reset
+        eachPrice = 5;
     }
 
     public void randomCups(View view) {
