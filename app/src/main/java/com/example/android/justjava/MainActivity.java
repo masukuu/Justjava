@@ -105,7 +105,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void decrement(View view) {
-        display(--quantity);
+        if( quantity > 0 )
+            display(--quantity);
+        else
+            display(quantity);
         displayPrice(quantity * eachPrice);
     }
 

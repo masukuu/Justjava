@@ -246,7 +246,7 @@
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#B9A44C"
                 android:onClick="submitOrder"
-                android:text="do not press me" />
+                android:text="submit" />
 
         </LinearLayout>
 
