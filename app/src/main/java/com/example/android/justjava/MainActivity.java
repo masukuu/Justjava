@@ -9,8 +9,10 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Button;
 
 import java.text.NumberFormat;
+import android.media.MediaPlayer;
 
 
 /**
@@ -31,7 +33,21 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.messenger_sound);
+
+        Button play_button = (Button)this.findViewById(R.id.button4);
+        play_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Log.v(TAG, "Playing sound...");
+
+                    mp.start();
+                submitOrder();
+
+            }
+        });
     }
 
     /**
@@ -64,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void submitOrder(View view){
+    public void submitOrder(){
         //get hasWhippedCream & hasChocolate
         CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.whipped_cream_checkBox);
         hasWhippedCream = whippedCreamBox.isChecked();
