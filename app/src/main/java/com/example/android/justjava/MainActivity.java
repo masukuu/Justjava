@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void submitOrder(){
+    public void submitOrder(View v){
         //get hasWhippedCream & hasChocolate
         CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.whipped_cream_checkBox);
         hasWhippedCream = whippedCreamBox.isChecked();
