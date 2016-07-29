@@ -2,6 +2,7 @@ package com.example.android.justjava;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
     String name;
     boolean hasWhippedCream = false;
     boolean hasChocolate = false;
+    private MediaPlayer mp;
     //CheckBox whippedCreamBox = (CheckBox) findViewById(R.id.whipped_cream_checkBox);
 
 
@@ -36,20 +38,28 @@ public class MainActivity extends ActionBarActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.messenger_sound);
+        mp = MediaPlayer.create(this, R.raw.messenger_sound);
 
-        Button play_button = (Button)this.findViewById(R.id.button4);
+        Button play_button = (Button) this.findViewById(R.id.button2);
         play_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Log.v(TAG, "Playing sound...");
-
-                    mp.start();
-                submitOrder();
+                stopPlaying();
+                mp = MediaPlayer.create(MainActivity.this, R.raw.messenger_sound);
+                mp.start();
+                //submitOrder();
 
             }
         });
     }
 
+    private void stopPlaying(){
+        if (mp != null) {
+            mp.stop();
+            mp.release();
+            mp = null;
+        }
+    }
     /**
      * This method is called when the order button is clicked.
      */
